@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Runnables.MATRIX">
+  <tabs>
+    <Tab text=".">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<children><Label layoutX="22.0" layoutY="29.0" style="-fx-font-size: 18px; -fx-font-family: &quot;Arial Black&quot;; -fx-text-fill: gray; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );" styleClass="title" text="Master" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" /><Separator layoutY="72.5" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0" /><PasswordField fx:id="master_field1" layoutX="88.3759765625" layoutY="117.5" prefWidth="200.0" promptText="type your actual password" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="120.0" /><PasswordField fx:id="master_field2" layoutX="88.751953125" layoutY="152.5" prefWidth="200.0" promptText="4 characters, only letters" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="160.0" /><PasswordField fx:id="master_field3" layoutX="88.751953125" layoutY="187.5" prefWidth="200.0" promptText="repeat your new password" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="200.0" /><Label layoutX="20.464599609375" layoutY="88.5" text="Restore master-password" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" /><Label layoutX="24.0" layoutY="125.0" text="Previous:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="125.0" /><Label layoutX="24.0" layoutY="165.0" text="New:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="165.0" /><Button fx:id="master_cancel" layoutX="157.0" layoutY="265.0" mnemonicParsing="false" onAction="#master_cancel" prefWidth="80.0" text="cancel" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="260.0" /><Button fx:id="master_ok" defaultButton="true" layoutX="228.2275390625" layoutY="258.5" mnemonicParsing="false" onAction="#master_ok" prefWidth="50.0" text="OK" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="260.0" /><Label fx:id="error1" layoutX="310.464599609375" layoutY="125.0" styleClass="error" text="X" visible="false" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="125.0" /><Label fx:id="error2" layoutX="310.0" layoutY="163.0" styleClass="error" text="X" visible="false" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="165.0" /><Label fx:id="error3" layoutX="310.0" layoutY="203.0" styleClass="error" text="X" visible="false" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="200.0" /><Label layoutX="22.964599609375" layoutY="212.5" text="Confirmation:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="205.0" />
+</children></AnchorPane>
+      </content>
+<graphic><ImageView fitHeight="58.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@imgs/candado.png" />
+</image></ImageView>
+</graphic>
+    </Tab>
+    <Tab text=".">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<children><Separator layoutY="72.5" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0" /><TextField fx:id="device_direction" layoutX="120.3759765625" layoutY="85.0" promptText="set your device's direction" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="100.0" /><Label text="Device:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="105.0" /><Button fx:id="device_picker" mnemonicParsing="false" onAction="#device_chooser" text="..." AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0" /><Label text="Password:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0" /><PasswordField fx:id="device_password1" promptText="4 characters, letters only" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="150.0" /><Label text="Confirmation:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="195.0" /><PasswordField fx:id="device_password2" promptText="repeat your new password" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="190.0" /><Label layoutX="22.0" layoutY="29.0" style="-fx-font-size: 18px; -fx-font-family: &quot;Arial Black&quot;; -fx-text-fill: gray; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );" styleClass="title" text="New Device" /><Button fx:id="device_cancel" layoutX="270.7275390625" layoutY="250.5" mnemonicParsing="false" onAction="#device_cancel" text="cancel" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="250.0" /><Button fx:id="device_ok" defaultButton="true" layoutX="389.2275390625" layoutY="250.5" mnemonicParsing="false" onAction="#device_ok" text="OK" AnchorPane.rightAnchor="89.7724609375" AnchorPane.topAnchor="250.0" />
+</children></AnchorPane>
+      </content>
+<graphic><ImageView fitHeight="62.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@imgs/usb.png" />
+</image></ImageView>
+</graphic>
+    </Tab><Tab text="recovering">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<children><Separator layoutY="72.5" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0" /><Label layoutX="22.0" layoutY="29.0" style="-fx-font-size: 18px; -fx-font-family: &quot;Arial Black&quot;; -fx-text-fill: gray; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );" styleClass="title" text="Recovery" />
+</children></AnchorPane>
+  </content>
+<graphic><ImageView fitHeight="55.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@imgs/recover.png" />
+</image></ImageView>
+</graphic>
+</Tab>
+  </tabs>
+</TabPane>
