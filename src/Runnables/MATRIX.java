@@ -51,14 +51,14 @@ public class MATRIX extends Application{
 	/*
 	 * Actions
 	 */
-	public void master_cancel(ActionEvent e)
+	public void master_cancel()
 	{
 		master_field1.setText("");
 		master_field2.setText("");
 		master_field3.setText("");
 	}
 	
-	public void master_ok(ActionEvent e)
+	public void master_ok()
 	{
 		System.out.println("you clicked to ok");
 	}
@@ -76,19 +76,19 @@ public class MATRIX extends Application{
 	/*
 	* Actions
 	*/
-	public void device_chooser(ActionEvent e)
+	public void device_chooser()
 	{
 		System.out.println("you clicked to chooser");
 	}
 	
-	public void device_cancel(ActionEvent e)
+	public void device_cancel()
 	{
 		device_direction.setText("");
 		device_password1.setText("");
 		device_password2.setText("");
 	}
 	
-	public void device_ok(ActionEvent e)
+	public void device_ok()
 	{
 		System.out.println("you clicked to ok");
 	}
