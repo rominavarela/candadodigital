@@ -78,7 +78,8 @@ public class MATRIX extends Application{
 	*/
 	public void device_chooser()
 	{
-		System.out.println("you clicked to chooser");
+		System.out.println(device_direction.getText());
+		return;
 	}
 	
 	public void device_cancel()
