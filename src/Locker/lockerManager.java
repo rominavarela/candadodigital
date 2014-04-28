@@ -9,14 +9,15 @@ public class lockerManager {
 	
 	public static void main(String args[])
 	{
-		ArrayList <File> files = Commons.IO.directoryContent ( "/home/romina/PDF" );
+		ArrayList <File> files = Commons.IO.directoryContent ( "/home/romina/PDF/Locker" );
 		hideFiles("lo que sea", files);
 	}
 	
 	public static void hideFiles ( String key , ArrayList <File> files )
 	{
 		for( File file : files )
-			hideFile(key,file);
+			if(file.isFile())
+				hideFile(key,file);
 	}
 	
 	static void hideFile ( String key , File file )
