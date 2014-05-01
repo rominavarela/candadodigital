@@ -10,8 +10,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-
 public class IO {
 	
 	public static ArrayList<String> read( String key , File where )
@@ -70,7 +68,6 @@ public class IO {
 		catch (Exception ex){}
 		
 	}
-	
 	public static File getFile(String name)
 	{
 		File f=new File(name);
@@ -80,9 +77,9 @@ public class IO {
 		else
 		{
 			File ROOT	= new File(IO.class.getResource("/").getFile());
-			f=new File(ROOT+"/"+name);
-			
-			return new File(f.getAbsolutePath());
+			f=new File(ROOT.getAbsolutePath().replace("%20", " ")+"/"+name);
+
+			return f;
 		}
 	}
 	
@@ -125,28 +122,21 @@ public class IO {
 		
 	}
 	
-	public static void CopyFile(File fileA, File fileB)	{
+	public static void CopyFile(File fileA, File fileB) throws Exception	{
 		FileInputStream		fin=  null;
 		FileOutputStream	fout= null;
 		byte[] 				data= null;
 		
-		try
-		{
-		  //convert file into array of bytes
-			data = new byte[(int) fileA.length()];
-			fin = new FileInputStream(fileA);
-		    fin.read(data);
-		    fin.close();
-		    
-		  //convert array of bytes into file
-		    fout = new FileOutputStream(fileB); 
-		    fout.write(data);
-		    fout.close();
-		}
-		catch(Exception ex)
-		{
-			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error @Copy\n", JOptionPane.ERROR_MESSAGE);
-		}
+	  //convert file into array of bytes
+		data = new byte[(int) fileA.length()];
+		fin = new FileInputStream(fileA);
+	    fin.read(data);
+	    fin.close();
+	    
+	  //convert array of bytes into file
+	    fout = new FileOutputStream(fileB); 
+	    fout.write(data);
+	    fout.close();
 		
     }
 	
