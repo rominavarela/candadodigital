@@ -29,21 +29,10 @@ public class MATRIX extends Application{
 		}
 	}
 	
-	public static File getFile(String name)
-	{
-		
-		File f=IO.getFile(name);
-		
-		JOptionPane.showMessageDialog(null, f.getAbsolutePath());
-		
-		return new File(f.getAbsolutePath());
-		
-	}
-		
 	@SuppressWarnings("deprecation")
 	public void start(Stage stage) throws Exception {
 		
-		File f= getFile("view.fxml");
+		File f= IO.getFile("view.fxml");
 		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(f.toURL());
@@ -72,6 +61,8 @@ public class MATRIX extends Application{
 		master_field1.setText("");
 		master_field2.setText("");
 		master_field3.setText("");
+		
+		Platform.exit();
 	}
 	
 	public void master_ok()
@@ -104,9 +95,7 @@ public class MATRIX extends Application{
 	
 	public void device_cancel()
 	{
-		device_direction.setText("");
-		device_password1.setText("");
-		device_password2.setText("");
+		Platform.exit();
 	}
 	
 	public void device_ok()
@@ -150,7 +139,7 @@ public class MATRIX extends Application{
 				{
 					initUSB(f, password);
 					JOptionPane.showMessageDialog(null, "Action completed");
-					device_cancel();
+					Platform.exit();
 				}
 			
 		}catch(Exception ex)
@@ -171,7 +160,7 @@ public class MATRIX extends Application{
 		 * 2 Config.txt
 		 */
 		try{
-			File  ConfigFile= new File(root+"/.config");
+			File  ConfigFile= new File(root+"/.lockerconfig");
 			ConfigFile.createNewFile();
 	
 			ArrayList<String> content= new ArrayList<String>();
@@ -183,7 +172,7 @@ public class MATRIX extends Application{
 			//stores key in device log
 			content= IO.read(Commons.Enums.GENERIC_KEY, new File(".devices"));
 			content.add(key);
-			IO.write(Commons.Enums.GENERIC_KEY, new File("/.devices"), content);
+			IO.write(Commons.Enums.GENERIC_KEY, new File("/.lockerdevices"), content);
 		}catch(Exception ex)
 		{
 			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

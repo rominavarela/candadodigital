@@ -7,12 +7,6 @@ import java.util.ArrayList;
 
 public class lockerManager {
 	
-	public static void main(String args[])
-	{
-		ArrayList <File> files = Commons.IO.directoryContent ( "/home/romina/PDF/Locker" );
-		hideFiles("lo que sea", files);
-	}
-	
 	public static void hideFiles ( String key , ArrayList <File> files )
 	{
 		for( File file : files )

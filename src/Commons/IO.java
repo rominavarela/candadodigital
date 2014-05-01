@@ -73,21 +73,26 @@ public class IO {
 	
 	public static File getFile(String name)
 	{
-		File ROOT	= new File(IO.class.getResource("/").getFile());
-		File f=new File(ROOT+"/"+name);
+		File f=new File(name);
 		
-		return new File(f.getAbsolutePath());
-		
+		if(f.exists())
+			return f;
+		else
+		{
+			File ROOT	= new File(IO.class.getResource("/").getFile());
+			f=new File(ROOT+"/"+name);
+			
+			return new File(f.getAbsolutePath());
+		}
 	}
 	
-	public static ArrayList<File> directoryContent ( String where )
+	public static ArrayList<File> directoryContent ( File where )
 	{
 		ArrayList<File> ans = new ArrayList<File>();
 		
-		File directory= new File ( where );
-		if ( directory.exists() && directory.isDirectory() )
+		if ( where.exists() && where.isDirectory() )
 		{
-			File[] fs = directory.listFiles();
+			File[] fs = where.listFiles();
 			
 			for ( int i=0 ; i < fs.length ; i++ )
 				ans.add(fs[i]);
