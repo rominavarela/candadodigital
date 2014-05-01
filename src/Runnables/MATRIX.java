@@ -16,21 +16,34 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 public class MATRIX extends Application{
 
 	public static void main(String args[])
-	{
+	{		
 		try{
-		launch (args);
+			launch (args);
 		}
 		catch(Exception ex){
-			JOptionPane.showMessageDialog(null, ex.getMessage());
+			JOptionPane.showMessageDialog(null, "ERROR @main\n"+ex.getMessage());
 		}
+	}
+	
+	public static File getFile(String name)
+	{
+		
+		File f=IO.getFile(name);
+		
+		JOptionPane.showMessageDialog(null, f.getAbsolutePath());
+		
+		return new File(f.getAbsolutePath());
+		
 	}
 		
 	@SuppressWarnings("deprecation")
 	public void start(Stage stage) throws Exception {
-		File f= new File("view.fxml");
+		
+		File f= getFile("view.fxml");
 		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(f.toURL());
@@ -39,7 +52,7 @@ public class MATRIX extends Application{
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, ex.getMessage());}
+			JOptionPane.showMessageDialog(null, "ERROR @start\n"+ex.getMessage());}
 	}
 	
 	///////////////////////////////////////////////////////////
@@ -101,36 +114,50 @@ public class MATRIX extends Application{
 		
 		String msg="";
 		try{
-			File f= new File(device_direction.getText());
-			if ( ! f.exists() )
-				msg+="\n- Not found direction.";
-			
-			String password = device_password1.getText();
-			if(password.length()==0)
-				msg+="\n- Empty field at: password";
-			else if (password.length()!=4)
-				msg+="\n- Password must have exactly 4 characters";
-			else if (!device_password2.getText().contentEquals(password))
-				msg+="\n- Passwords mismatch";
-			
-			if( !msg.isEmpty() )
-			{
-				JOptionPane.showMessageDialog(null,
-						"ERROR"+msg, "Error",
-						JOptionPane.ERROR_MESSAGE);
-			}
-			else
-			{
-				initUSB(f, password);
-				JOptionPane.showMessageDialog(null, "Action completed");
-			}
+				File f= new File(device_direction.getText());
+				
+				String password = device_password1.getText();
+				if(password.length()==0)
+				{
+					msg="\n- Empty field at: password";
+					device_password1.selectAll();
+				}
+				else if (password.length()!=4)
+				{
+					msg="\n- Password must have exactly 4 characters";
+					device_password1.selectAll();
+				}
+				else if (!device_password2.getText().contentEquals(password))
+				{
+					msg="\n- Passwords mismatch";
+					device_password2.selectAll();
+				}
+				
+
+				if ( ! f.exists() )
+				{
+					msg="\n- Not found direction."+msg;
+					device_direction.selectAll();
+				}
+				
+				if( !msg.isEmpty() )
+				{
+					JOptionPane.showMessageDialog(null,
+							"ERROR"+msg, "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				{
+					initUSB(f, password);
+					JOptionPane.showMessageDialog(null, "Action completed");
+					device_cancel();
+				}
 			
 		}catch(Exception ex)
 		{
 			JOptionPane.showMessageDialog(null, "ERROR"+msg+"\n\nStack Trace:\n"+ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
-		device_cancel();
 	}
 	
 	public static void initUSB( File root , String key )
@@ -170,13 +197,12 @@ public class MATRIX extends Application{
 		/*
 		 * 4 Open.jar
 		 */
-		System.out.println(root.getPath());
-		IO.CopyFile(new File("Open.jar"), new File(root.getPath()+"/Open.jar"));
+		IO.CopyFile(IO.getFile("Open.jar"), new File(root.getPath()+"/Open.jar"));
 		
 		/*
 		 * 5 Close.jar
 		 */
-		IO.CopyFile(new File("Close.jar"), new File(root.getPath()+"/Close.jar"));
+		IO.CopyFile(IO.getFile("Close.jar"), new File(root.getPath()+"/Close.jar"));
 	}
 	
 	

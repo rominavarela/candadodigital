@@ -18,7 +18,7 @@ public class Close {
 	{
 		try{
 			
-			File  ConfigFile= new File(".config");
+			File  ConfigFile= IO.getFile(".config");
 			ArrayList<String> content= new ArrayList<String>();
 			
 			content= IO.read(Commons.Enums.GENERIC_KEY, ConfigFile);

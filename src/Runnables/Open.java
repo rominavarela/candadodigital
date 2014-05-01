@@ -19,8 +19,8 @@ public class Open {
 	public Open()
 	{
 		try{
-			
-			File  ConfigFile= new File(".config");
+
+			File  ConfigFile= IO.getFile(".config");
 			ArrayList<String> content= new ArrayList<String>();
 			
 			while(true)

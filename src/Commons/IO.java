@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class IO {
 	
@@ -67,6 +68,15 @@ public class IO {
 			writer.close();
 		}
 		catch (Exception ex){}
+		
+	}
+	
+	public static File getFile(String name)
+	{
+		File ROOT	= new File(IO.class.getResource("/").getFile());
+		File f=new File(ROOT+"/"+name);
+		
+		return new File(f.getAbsolutePath());
 		
 	}
 	
@@ -128,7 +138,10 @@ public class IO {
 		    fout.write(data);
 		    fout.close();
 		}
-		catch (Exception ex){System.out.println(ex.getLocalizedMessage());}
+		catch(Exception ex)
+		{
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error @Copy\n", JOptionPane.ERROR_MESSAGE);
+		}
 		
     }
 	
