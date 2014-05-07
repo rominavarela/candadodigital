@@ -35,6 +35,8 @@ public class textEncryptor {
 	int[] char_values;
 	char[] char_means;
 	
+/////////////////////////////////////////////////////////////////////
+//CONSTRUCTOR
 	public textEncryptor()
 	{
 		char_values= new int['z'+1];

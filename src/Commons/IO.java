@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 public class IO {
 	
+	/*
+	 * read takes encrypted text file content
+	 */
 	public static ArrayList<String> read( String key , File where )
 	{
 		ArrayList<String> ans = new ArrayList<String>();
@@ -44,6 +47,9 @@ public class IO {
 		return ans;
 	}
 	
+	/*
+	 * write takes input and encrypts it into a text file
+	 */
 	public static void write( String key , File where , ArrayList<String> what )
 	{
 		BufferedWriter writer= null;
@@ -68,9 +74,16 @@ public class IO {
 		catch (Exception ex){}
 		
 	}
+	
+	/*
+	 * getFile guarantees cross-platform relative path  
+	 */
 	public static File getFile(String name)
-	{
+	{		
 		File f=new File(name);
+				
+		if (System.getProperty("os.name").toLowerCase().contains("win"))
+			return f;
 		
 		if(f.exists())
 			return f;
@@ -83,6 +96,9 @@ public class IO {
 		}
 	}
 	
+	/*
+	 * directoryContent returns list of files in a directory
+	 */
 	public static ArrayList<File> directoryContent ( File where )
 	{
 		ArrayList<File> ans = new ArrayList<File>();
@@ -92,12 +108,16 @@ public class IO {
 			File[] fs = where.listFiles();
 			
 			for ( int i=0 ; i < fs.length ; i++ )
-				ans.add(fs[i]);
+				if ( fs[i].isFile())
+					ans.add(fs[i]);
 		}
 		
 		return ans;
 	}
 	
+	/*
+	 * method writes autorun content-like to a file
+	 */
 	public static void writeRunnable( File where )
 	{
 		BufferedWriter writer= null;
@@ -122,6 +142,9 @@ public class IO {
 		
 	}
 	
+	/*
+	 * CopyFile copies from A t B
+	 */
 	public static void CopyFile(File fileA, File fileB) throws Exception	{
 		FileInputStream		fin=  null;
 		FileOutputStream	fout= null;
@@ -140,6 +163,9 @@ public class IO {
 		
     }
 	
+	/*
+	 * chooseDirection shows emergent window with directory chooser
+	 */
 	public static String chooseDirection()
 	{
 		JFileChooser chooser = new JFileChooser(); 

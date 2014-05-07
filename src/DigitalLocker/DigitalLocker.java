@@ -15,8 +15,8 @@ import javafx.scene.control.TextField;
 
 public class DigitalLocker {
 	
-	///////////////////////////////////////////////////////////
-	// DEVICE TAB
+///////////////////////////////////////////////////////////
+// DEVICE TAB
 	/*
 	* Objects
 	*/
@@ -37,6 +37,9 @@ public class DigitalLocker {
 		return;
 	}
 	
+/*
+# action for OK BUTTON
+*/
 	public void device_ok()
 	{
 		String msg="";
@@ -86,7 +89,10 @@ public class DigitalLocker {
 		}
 		
 	}
-	
+
+/*
+# when input is approved, USB gets initialized
+*/
 	private static void initUSB( File root , String key )
 	{		
 		/*
@@ -146,8 +152,8 @@ public class DigitalLocker {
 		
 	}
 	
-	///////////////////////////////////////////////////////////
-	// SETTINGS TAB
+///////////////////////////////////////////////////////////
+// SETTINGS TAB
 	/*
 	 * Objects
 	 */
@@ -170,6 +176,9 @@ public class DigitalLocker {
 		return;
 	}
 	
+/*
+# action for OK BUTTON
+*/
 	public void settings_ok()
 	{
 		String msg="";
