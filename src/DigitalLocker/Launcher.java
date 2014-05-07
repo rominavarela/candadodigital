@@ -17,8 +17,10 @@ public class Launcher extends Application{
 	public static void main(String args[])
 	{
 		/*
-		 * # Lanzador del CERRAJERO
-		 * ## llama la vista de formato .fxml para ser cargada por la libreria de javaFX
+
+# Lanzador del CERRAJERO
+## llama la vista de formato .fxml para ser cargada por la libreria de javaFX
+
 		 */
 		launch ();
 	}
